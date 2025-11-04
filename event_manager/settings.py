@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,9 +72,6 @@ CORS_ALLOWED_ORIGINS = [
     
     # 2. Your specific GitHub Pages frontend URL (This is the ORIGIN)
     "https://bytemeshiv.github.io", 
-    
-    # 3. Specific path to your repository
-    "https://bytemeshiv.github.io/event-manager-frontend", 
 ]
 
 # --- JWT Settings ---
