@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # 3rd Party Apps
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 
     # Local Apps
     'api',
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,6 +63,26 @@ TEMPLATES = [
         },
     },
 ]
+
+
+CORS_ALLOWED_ORIGINS = [
+    # 1. Your PythonAnywhere domain (for backend API access)
+    "https://thesarcasticone69.pythonanywhere.com", 
+    
+    # 2. Your specific GitHub Pages frontend URL (This is the ORIGIN)
+    "https://bytemeshiv.github.io", 
+    
+    # 3. Specific path to your repository
+    "https://bytemeshiv.github.io/event-manager-frontend", 
+]
+
+# --- JWT Settings ---
+# 🚨 ADD THIS ENTIRE BLOCK 🚨
+# Setting a short lifetime is good practice for security, the refresh token handles renewal
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=1),
+}
 
 WSGI_APPLICATION = 'event_manager.wsgi.application'
 
